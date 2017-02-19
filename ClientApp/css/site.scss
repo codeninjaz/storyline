@@ -18,7 +18,9 @@ body {
 }
 
 .story {
-    flex: 1 1 100%;
+    flex: 1 1 75%;
+    position: relative;
+
     h2 {
         margin-top: 0;
         margin-bottom: 10px;
@@ -28,6 +30,7 @@ body {
 .view {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .profile {
@@ -39,6 +42,40 @@ body {
 .story-in-list {
     display: flex;
 }
+
+.show-more {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #cccccc;
+}
+
+.edit-div-textarea {
+    flex: 1 1 75%;
+
+    textarea {
+        width: 100%;
+        height: 300px;
+    }
+
+    margin-bottom: 20px;    
+}
+
+.create-story {
+    textarea {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.edit-div {
+    flex: 1 1 75%;
+    display: flex;
+}
+
 /* Keep the nav menu independent of scrolling and on top of other items */
 
 @media (max-width: 767px) {

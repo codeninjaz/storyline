@@ -11,7 +11,7 @@ export class Layout extends React.Component<ILayoutProps, void> {
                 <div className="header clearfix">
                         <nav>
                         <ul className="nav nav-pills pull-right">
-                            <li role="presentation"><a href="#" className='btn btn-success'>Create story</a></li>
+                            <li role="presentation"><Link className='btn btn-success' to={'/story/create'}>Create story</Link></li>
                             <li role="presentation"><a href="#">Login</a></li>
                         </ul>
                         </nav>
