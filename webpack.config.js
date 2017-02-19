@@ -33,7 +33,7 @@ module.exports = (env) => {
                     use: 'awesome-typescript-loader?silent=true'
                 },
                 {
-                    test: /\.css$/,
+                    test: /\.scss$/,
                     use: isDevBuild ? ['style-loader', 'css-loader', 'sass-loader'] : ExtractTextPlugin.extract({
                         use: 'css-loader'
                     })

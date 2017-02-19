@@ -5,6 +5,9 @@
             true,
             "jsx-double",
             "single"
+        ],
+        "max-line-length": [
+            false
         ]
     }
 }
