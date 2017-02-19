@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StoryInList} from './StoryInList'
+import { Link } from 'react-router';
 
 export interface IStoryProps {
     body: React.ReactElement<any>;
@@ -7,6 +7,7 @@ export interface IStoryProps {
 
 export class Story extends React.Component<IStoryProps, void> {
     public render() {
+
         return <div>
             <div className='story-in-list'>
                 <div className='voting-container'>

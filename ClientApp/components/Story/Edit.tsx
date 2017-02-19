@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {StoryInList} from './StoryInList'
+import {InList} from './InList'
 
-export class StoryEdit extends React.Component<any, void> {
+export class Edit extends React.Component<any, void> {
     public render() {
         return <div>
             <h1>story EDÌT</h1>
