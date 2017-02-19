@@ -1,29 +1,33 @@
-.main-nav {
-    li {
-        .glyphicon {
-            margin-right: 10px;
-        }
-        a.active {
-            background-color: #4189C7;
-            color: white;
-            &:hover,
-            &:focus {
-                background-color: #4189C7;
-                color: white;
-            }
-        }
-    }
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
+.header {
+    margin-bottom: 30px;
 
-/* Highlighting rules for nav menu items */
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;        
+    }
+}
 
+.voting-container {
+    flex: 0 0 50px;
+}
 
+.story {
+    flex: 1 1 100%;
+    h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.story-in-list {
+    display: flex;
+}
 /* Keep the nav menu independent of scrolling and on top of other items */
 
 @media (max-width: 767px) {
