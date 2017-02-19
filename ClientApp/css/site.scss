@@ -25,6 +25,17 @@ body {
     }
 }
 
+.view {
+    position: relative;
+    display: flex;
+}
+
+.profile {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .story-in-list {
     display: flex;
 }

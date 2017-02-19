@@ -9,6 +9,10 @@ export class Home extends React.Component<any, void> {
                 <StoryInList type='text'/>
                 <StoryInList type='text'/>
                 <StoryInList type='text'/>
+                <StoryInList type='text'/>
+                <StoryInList type='text'/>
+                <StoryInList type='text'/>
+                <StoryInList type='text'/>
         </div>;
     }
 }
