@@ -4,10 +4,22 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { browserHistory, Router } from 'react-router';
 import routes from './routes';
+import { Provider } from 'mobx-react';
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import { StorylineStore } from './components/Stores/storylineStore';
 
-// This code starts up the React app when it runs in a browser. It sets up the routing configuration
-// and injects the app into a DOM element.
+const routingStore = new RouterStore();
+const store = new StorylineStore();
+
+const stores = {
+    // Key can be whatever you want
+    routing: routingStore,
+    storylineStore: store
+};
+
 ReactDOM.render(
-    <Router history={browserHistory} children={routes} />,
+    <Provider {...stores}>
+        <Router history={browserHistory} children={routes} />
+    </Provider>,
     document.getElementById('react-app'),
 );

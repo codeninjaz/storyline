@@ -6,6 +6,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "skipDefaultLibCheck": true,
+    "experimentalDecorators": true,
     "paths": {
       // Fix "Duplicate identifier" errors caused by multiple dependencies fetching their own copies of type definitions.
       // We tell TypeScript which type definitions module to treat as the canonical one (instead of combining all of them).
@@ -14,7 +15,7 @@
     }
   },
   "exclude": [
-      "bin",
-      "node_modules"
+    "bin",
+    "node_modules"
   ]
 }

@@ -8,6 +8,9 @@
         ],
         "max-line-length": [
             false
+        ],
+        "ordered-imports": [
+            false
         ]
     }
 }
