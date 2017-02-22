@@ -7,26 +7,31 @@ export interface ILayoutProps {
 
 export class Layout extends React.Component<ILayoutProps, void> {
     public render() {
-        return <div className='container'>
-                <div className="header clearfix">
-                        <nav>
-                        <ul className="nav nav-pills pull-right">
-                            <li role="presentation"><Link className='btn btn-success' to={'/story/create'}>Create story</Link></li>
-                            <li role="presentation"><a href="#">Login</a></li>
-                        </ul>
+        return <div className='layout'>
+                   
+                    <header className='site-header'>
+                        <div className='logo'>
+                            <span className="glyphicon glyphicon-bold"></span>
+                        </div>
+                        <div className='header-middle-area'>
+                            <h3>
+                                <Link to={'/'}>
+                                    Storyline asd
+                                </Link>
+                            </h3>
+                        </div>
+                        <nav className='main-menu'>
+                            <ul>
+                                <li role="presentation"><Link className='btn btn-success' to={'/story/create'}>Create story</Link></li>
+                                <li role="presentation"><a href="#">Login</a></li>
+                            </ul>
                         </nav>
-                        <h3 className="text-muted">
-                            <Link to={'/'}>
-                                Storyline
-                            </Link>
-                        </h3>
-                    </div>
-
-            <div className='row'>
-                <div className='col-sm-12'>
+                        <div className='search-area'>
+                            
+                        </div>
+                    </header>
+                    
                     {this.props.body}
-                </div>
-            </div>
-        </div>;
+                </div>;
     }
 }
