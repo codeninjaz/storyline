@@ -1,10 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 import { Votebar } from './Votebar';
+import { inject, observer } from 'mobx-react';
 
+@inject('storylineStore')
+@observer
 export class View extends React.Component<any, void> {
     public render() {
+        console.log('storylineStore', this.props.storylineStore);
+
         return <div>
+            <h1>TEST={this.props.storylineStore.test}</h1>
+            <div><Link to={'/story/edit/123'}><span className='glyphicon glyphicon-cog' /></Link></div>
 
             <div><Link to={'/story/edit/123'}><span className='glyphicon glyphicon-cog'/></Link></div>
 
