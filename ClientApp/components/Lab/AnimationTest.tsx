@@ -10,7 +10,6 @@ interface ITestAnimationState {
 export class AnimationTest extends React.Component<any, ITestAnimationState> {
 
     private interval: any;
-
     constructor(props: any) {
         super(props);
         this.state = {
@@ -30,11 +29,12 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
     public render() {
         return (<div style={{ overflow: 'hidden' }}>
             <Transition
+                style={{ listStyle: 'lower-latin inside' }}
                 component={'ul'}
                 enter={{ opacity: 1, translateX: spring(0, { stiffness: 500, damping: 20 }) }}
                 leave={{ opacity: 0, translateX: 250 }}
             >
-                {this.state.items.map((item, index) => (<li key={`testitem-${index}`}>{item}</li>))}
+                {this.state.items.map((item, index) => (<li key={`testitem-${index}`} style={{ fontSize: '0.8rem' }} >{item}</li>))}
             </Transition>
         </div>);
     }

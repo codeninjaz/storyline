@@ -1,6 +1,6 @@
 @import './variables.scss';
-
-body, html {
+body,
+html {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
@@ -14,7 +14,9 @@ a {
     color: $color-unique;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
