@@ -1,24 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router';
+import { Votebar } from './Votebar';
 
 export class InList extends React.Component<any, void> {
     public render() {
         return <div className='story-in-list'>
-                    <div className='voting-container'>
-                        <div><span className='glyphicon glyphicon-arrow-up'/></div>
-                        <div><span>10.5k</span></div>
-                        <div><span className='glyphicon glyphicon-arrow-down'/></div>
-                    </div>
-                    <div className='voting-container'>
-                        <div>
-                            <span className='glyphicon glyphicon-bold'/>
-                        </div>
-                        <div>
-                            <Link to={'/story/edit/123'}>
-                                <span className='glyphicon glyphicon-cog'/>
-                            </Link>
-                        </div>
-                    </div>
+                    <Votebar />
                     <div className='story'>
                         <h2>
                             <Link to={'/story/view/123'}>

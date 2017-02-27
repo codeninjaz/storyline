@@ -10,24 +10,21 @@ export class Layout extends React.Component<ILayoutProps, void> {
         return <div className='layout'>
                    
                     <header className='site-header'>
-                        <div className='logo'>
-                            <span className="glyphicon glyphicon-bold"></span>
-                        </div>
-                        <div className='header-middle-area'>
-                            <h3>
+                        <div className='header-width'>
+                            <div className='logo'>
+                                °□°
+                            </div>
+                            <div className='header-middle-area'>
                                 <Link to={'/'}>
-                                    Storyline asd
+                                    Storyline
                                 </Link>
-                            </h3>
-                        </div>
-                        <nav className='main-menu'>
-                            <ul>
-                                <li role="presentation"><Link className='btn btn-success' to={'/story/create'}>Create story</Link></li>
-                                <li role="presentation"><a href="#">Login</a></li>
-                            </ul>
-                        </nav>
-                        <div className='search-area'>
-                            
+                            </div>
+                            <nav className='main-menu'>
+                                <ul>
+                                    <li><Link to={'/story/create'}>Create story</Link></li>
+                                    <li><Link to={'/login'}>Login</Link></li>
+                                </ul>
+                            </nav>
                         </div>
                     </header>
                     
