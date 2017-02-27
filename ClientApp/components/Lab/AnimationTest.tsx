@@ -24,6 +24,9 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
         this.resetStuff();
     }
 
+    public componentWillUnmount() {
+        clearInterval(this.interval);
+    }
     public render() {
         return (<div style={{ overflow: 'hidden' }}>
             <Transition
