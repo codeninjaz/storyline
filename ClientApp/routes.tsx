@@ -9,6 +9,7 @@ import { Story } from './components/Story/Story';
 import { Create as StoryCreate } from './components/Story/Create';
 import { Edit as StoryEdit } from './components/Story/Edit';
 import { View as StoryView } from './components/Story/View';
+import { AnimationTest } from './components/Lab/AnimationTest';
 
 
 export default <Route component={Layout}>
@@ -22,6 +23,7 @@ export default <Route component={Layout}>
         <Route path='view/:userID' components={{ body: ProfileView }} />
         <Route path='edit/:userID' components={{ body: ProfileEdit }} />
     </Route>
+    <Route path='/lab/animation' components={{ body: AnimationTest }} />
 </Route>;
 
 // Allow Hot Module Reloading
