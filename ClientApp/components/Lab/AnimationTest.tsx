@@ -31,7 +31,7 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
             <Transition
                 style={{ listStyle: 'lower-latin inside' }}
                 component={'ul'}
-                enter={{ opacity: 1, translateX: spring(0, { stiffness: 500, damping: 20 }) }}
+                enter={{ opacity: 1, translateX: spring(0, { stiffness: 200, damping: 20 }) }}
                 leave={{ opacity: 0, translateX: 250 }}
             >
                 {this.state.items.map((item, index) => (<li key={`testitem-${index}`} style={{ fontSize: '0.8rem' }} >{item}</li>))}
@@ -52,7 +52,7 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
             this.setState(
                 {
                     items: this.state.items.concat([`nummer:${this.state.num}`]),
-                    num: this.state.num += 1,
+                    num: this.state.num + 1,
                 },
             );
             if (this.state.num > 20) { this.resetStuff(); }
