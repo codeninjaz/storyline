@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Transition from 'react-motion-ui-pack';
 import { spring } from 'react-motion';
+import Blob from './Blob';
 
 interface ITestAnimationState {
     items: string[];
@@ -9,7 +10,8 @@ interface ITestAnimationState {
 
 export class AnimationTest extends React.Component<any, ITestAnimationState> {
 
-    private interval: any;
+    private interval: any = null;
+    private timerOn: boolean = false;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -24,10 +26,14 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
     }
 
     public componentWillUnmount() {
-        clearInterval(this.interval);
+        this.cancelRows();
     }
+
     public render() {
         return (<div style={{ overflow: 'hidden' }}>
+            <Blob />
+            <button onClick={this.cancelRows.bind(this)}>Stoppa!</button>
+            <button onClick={this.iterate.bind(this)}>Starta!</button>
             <Transition
                 style={{ listStyle: 'lower-latin inside' }}
                 component={'ul'}
@@ -39,23 +45,32 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
         </div>);
     }
 
+    private cancelRows() {
+        clearInterval(this.interval);
+        this.timerOn = false;
+    }
+
     private resetStuff() {
         clearInterval(this.interval);
         this.setState(
             { items: [], num: 0 },
         );
+        this.timerOn = false;
         this.iterate();
     }
 
     private iterate() {
-        this.interval = setInterval(() => {
-            this.setState(
-                {
-                    items: this.state.items.concat([`nummer:${this.state.num}`]),
-                    num: this.state.num + 1,
-                },
-            );
-            if (this.state.num > 20) { this.resetStuff(); }
-        }, 300);
+        if (!this.timerOn) {
+            this.interval = setInterval(() => {
+                this.setState(
+                    {
+                        items: this.state.items.concat([`nummer:${this.state.num}`]),
+                        num: this.state.num + 1,
+                    },
+                );
+                if (this.state.num > 20) { this.resetStuff(); }
+            }, 300);
+        }
+        this.timerOn = true;
     }
 }
