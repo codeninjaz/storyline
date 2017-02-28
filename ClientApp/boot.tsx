@@ -9,12 +9,12 @@ import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { StorylineStore } from './components/Stores/storylineStore';
 
 const routingStore = new RouterStore();
-// const store = new StorylineStore();
+const store = new StorylineStore();
 
 const stores = {
     // Key can be whatever you want
     routing: routingStore,
-    // storylineStore: store,
+    storylineStore: store,
 };
 
 ReactDOM.render(

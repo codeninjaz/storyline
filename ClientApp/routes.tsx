@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HistoryBase, Route, Router } from 'react-router';
+import { Route, Router } from 'react-router';
 import { Home } from './components/Home';
 import { Layout } from './components/Layout';
 import { Profile } from './components/Profile/Profile';
