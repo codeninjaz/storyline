@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Router } from 'react-router';
+import { Route, Router, browserHistory} from 'react-router';
 import { Home } from './components/Home';
 import { Layout } from './components/Layout';
 import { Profile } from './components/Profile/Profile';
@@ -12,7 +12,7 @@ import { View as StoryView } from './components/Story/View';
 import { AnimationTest } from './components/Lab/AnimationTest';
 
 
-export default <Route component={Layout}>
+export default <Router history={browserHistory}><Route component={Layout}>
     <Route path='/' components={{ body: Home }} />
     <Route path='/story' components={{ body: Story }}>
         <Route path='view/:storyID' components={{ body: StoryView }} />
@@ -24,7 +24,7 @@ export default <Route component={Layout}>
         <Route path='edit/:userID' components={{ body: ProfileEdit }} />
     </Route>
     <Route path='/lab/animation' components={{ body: AnimationTest }} />
-</Route>;
+</Route></Router>;
 
 // Allow Hot Module Reloading
 declare var module: any;
