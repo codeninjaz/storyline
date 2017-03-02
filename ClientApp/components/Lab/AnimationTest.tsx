@@ -2,10 +2,12 @@ import * as React from 'react';
 import Transition from 'react-motion-ui-pack';
 import { spring } from 'react-motion';
 import Blob from './Blob';
+import Ball from './Ball';
 
 interface ITestAnimationState {
     items: string[];
     num: number;
+    ballActive: boolean;
 }
 
 export class AnimationTest extends React.Component<any, ITestAnimationState> {
@@ -15,6 +17,7 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
     constructor(props: any) {
         super(props);
         this.state = {
+            ballActive: false,
             items: [],
             num: 0,
         };
@@ -32,6 +35,7 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
     public render() {
         return (<div style={{ overflow: 'hidden' }}>
             <Blob />
+            <Ball onClick={this.clickBall.bind(this)} isActive={this.state.ballActive} />
             <button onClick={this.cancelRows.bind(this)}>Stoppa!</button>
             <button onClick={this.iterate.bind(this)}>Starta!</button>
             <Transition
@@ -43,6 +47,12 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
                 {this.state.items.map((item, index) => (<li key={`testitem-${index}`} style={{ fontSize: '0.8rem' }} >{item}</li>))}
             </Transition>
         </div>);
+    }
+
+    private clickBall() {
+        this.setState({
+            ballActive: !this.state.ballActive,
+        })
     }
 
     private cancelRows() {
