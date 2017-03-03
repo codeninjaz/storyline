@@ -29,7 +29,7 @@ export default class Blob extends React.Component<any, IBlobState> {
 
     private divStyle(st) {
         return {
-            backgroundColor: 'rgba(127,255,130,1)',
+            backgroundColor: 'rgba(127,' + st.r + ',130,1)',
             border: 'solid 1px #999',
             height: '50px',
             left: '50%',
@@ -43,12 +43,14 @@ export default class Blob extends React.Component<any, IBlobState> {
 
     private blobInitialStyle() {
         return {
+            r: spring(0, { precision: 1 }),
             width: spring(300, { stiffness: 300, damping: 10 }),
         };
     };
 
     private blobActiveStyle() {
         return {
+            r: spring(255, { precision: 1 }),
             width: spring(500, { stiffness: 300, damping: 10 }),
         };
     };
