@@ -1,6 +1,6 @@
-import { observable, action} from 'mobx';
+import { observable, action } from 'mobx';
 
-import {storiesJson} from '../JsonData/stories';
+import { storiesJson } from '../JsonData/stories';
 
 export class StorylineStore {
     @observable
@@ -10,18 +10,19 @@ export class StorylineStore {
     public isDebug = true;
 
     @observable
-    public stories = []
+    public stories = [];
 
     private page = 0;
-    @action loadStories = () => {
-        if(this.isDebug) {
-            let pageSize = 2
-            let itemsToInsert = storiesJson.splice(this.page*pageSize, pageSize)
-            this.stories.push(
-                itemsToInsert
-            )
 
-            this.page++
+    @action
+    public loadStories = () => {
+        if (this.isDebug) {
+            const pageSize = 2;
+            const itemsToInsert = storiesJson.slice(this.page * pageSize, pageSize);
+            itemsToInsert.map((item, index) => {
+                this.stories.push(item);
+            });
+            this.page++;
         }
     }
 }
