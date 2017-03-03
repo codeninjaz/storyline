@@ -37,6 +37,7 @@ export default class Blob extends React.Component<any, IBlobState> {
             position: 'relative',
             textAlign: 'center',
             transform: 'translateX(-50%)',
+            userSelect: 'none',
             width: st.width + 'px',
         };
     };

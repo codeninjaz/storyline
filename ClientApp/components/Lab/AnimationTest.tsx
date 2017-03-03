@@ -34,7 +34,6 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
 
     public render() {
         return (<div style={{ overflow: 'hidden' }}>
-            <Blob />
             <Ball onClick={this.clickBall.bind(this)} isActive={this.state.ballActive} />
             <button onClick={this.cancelRows.bind(this)}>Stoppa!</button>
             <button onClick={this.iterate.bind(this)}>Starta!</button>
@@ -52,7 +51,7 @@ export class AnimationTest extends React.Component<any, ITestAnimationState> {
     private clickBall() {
         this.setState({
             ballActive: !this.state.ballActive,
-        })
+        });
     }
 
     private cancelRows() {
