@@ -5,6 +5,7 @@ const ballStyle = () => {
         backgroundColor: '#ff00f0',
         border: 'solid 8px #000',
         borderRadius: '50%',
+        cursor: 'pointer',
         height: '100px',
         margin: '30px',
         paddingTop: '25px',
