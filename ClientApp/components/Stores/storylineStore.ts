@@ -18,7 +18,8 @@ export class StorylineStore {
     public loadStories = () => {
         if (this.isDebug) {
             const pageSize = 2;
-            const itemsToInsert = storiesJson.slice(this.page * pageSize, pageSize);
+            let startIndex = this.page * pageSize;
+            const itemsToInsert = storiesJson.slice(startIndex, startIndex + pageSize);
             itemsToInsert.map((item, index) => {
                 this.stories.push(item);
             });
