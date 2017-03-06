@@ -1,13 +1,13 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed, reaction} from 'mobx';
 
-import { storiesJson } from '../JsonData/stories';
+import {Story} from './Story';
 
 export class StorylineStore {
-    @observable
-    public test = 15;
+    transportLayer;
 
-    @observable
-    public isDebug = true;
+    constructor(transportLayer) {
+        this.transportLayer = transportLayer; // Thing that can make server requests for us
+    }
 
     @observable
     public stories = [];
@@ -16,14 +16,13 @@ export class StorylineStore {
 
     @action
     public loadStories = () => {
-        if (this.isDebug) {
-            const pageSize = 2;
-            let startIndex = this.page * pageSize;
-            const itemsToInsert = storiesJson.slice(startIndex, startIndex + pageSize);
-            itemsToInsert.map((item, index) => {
-                this.stories.push(item);
-            });
-            this.page++;
-        }
+        const pageSize = 2;
+        let startIndex = this.page * pageSize;
+        const itemsToInsert = this.transportLayer.fetchStories(startIndex, startIndex + pageSize);
+
+        itemsToInsert.map((item, index) => {
+            this.stories.push(new Story(this, item));
+        });
+        this.page++;
     }
 }

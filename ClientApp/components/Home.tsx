@@ -21,7 +21,7 @@ export class Home extends React.Component<any, void> {
             <ScrollWrapper onWindowScroll={(event) => this.handleScroll(event)} scrollTo={this.scrollToElement}>
                 {this.props.storylineStore.stories.map(function (item, index) {
                     console.log(item)
-                    return <InList key={item.storyId} data={item} type='text' />
+                    return <InList key={item.id} data={item} type='text' />
                 })}
 
                 <div ref={(element) => {this.scrollToElement = element}}></div> 

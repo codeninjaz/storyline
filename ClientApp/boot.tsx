@@ -6,10 +6,11 @@ import { browserHistory, Router } from 'react-router';
 import routes from './routes';
 import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
-import { StorylineStore } from './components/Stores/storylineStore';
+import { StorylineStore } from './components/Stores/StorylineStore';
+import { TransportLayer } from './components/TransportLayer';
 
 const routingStore = new RouterStore();
-const store = new StorylineStore();
+const store = new StorylineStore(new TransportLayer(true));
 
 const stores = {
     // Key can be whatever you want
