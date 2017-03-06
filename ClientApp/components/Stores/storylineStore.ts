@@ -1,6 +1,6 @@
 import { observable, action, computed, reaction} from 'mobx';
-
 import {Story} from './Story';
+import {TransportLayerStatus} from '../TransportLayer';
 
 export class StorylineStore {
     transportLayer;
@@ -14,15 +14,28 @@ export class StorylineStore {
 
     private page = 0;
 
+    @observable
+    public storiesLoad = false;
+    
     @action
     public loadStories = () => {
         const pageSize = 2;
         let startIndex = this.page * pageSize;
-        const itemsToInsert = this.transportLayer.fetchStories(startIndex, startIndex + pageSize);
+        this.transportLayer.fetchStories(startIndex, startIndex + pageSize, 
+        function(result) {
+            if(result.status === TransportLayerStatus.Ok) {
+                result.data.map((item, index) => {
+                    this.stories.push(new Story(this, item));
+                });
 
-        itemsToInsert.map((item, index) => {
-            this.stories.push(new Story(this, item));
-        });
+                this.storiesLoad = false;
+            }
+            else if(result.status === TransportLayerStatus.Loading) {
+                this.storiesLoad = true;
+            }
+        }.bind(this));
+
+
         this.page++;
     }
 }
