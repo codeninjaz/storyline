@@ -1,17 +1,25 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 import { Votebar } from './Votebar';
+import { inject, observer } from 'mobx-react';
 
 export interface IStoryProps {
     body: React.ReactElement<any>;
 }
 
-export class Story extends React.Component<IStoryProps, void> {
+@inject('storylineStore')
+@observer
+export class Story extends React.Component<any, void> {
+    componentDidMount()
+    {        
+        var p = this.props.storylineStore.loadStory(this.props.params.storyID);
+    }
+
     public render() {
 
         return <div className='story-width'>
             <div className='story-in-list'>
-                <Votebar />
+                <Votebar score={100} storyId={12}/>
                 <div className='story'>
                     <h1>Rödluvan</h1>
                     <p>3 dagar sedan av <Link to={'/profile/view/fluffmannen'}>fluffmannen</Link></p>

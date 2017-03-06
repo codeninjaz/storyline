@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 import { Votebar } from './Votebar';
+import { observer } from 'mobx-react';
 
+@observer
 export class InList extends React.Component<any, void> {
     public render() {
         return <div className='story-in-list'>

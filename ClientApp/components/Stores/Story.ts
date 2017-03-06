@@ -52,6 +52,16 @@ export class Story {
         };
     }
 
+    @action
+    voteUp() {
+        this.voteScore = this.voteScore + 1;
+    }
+
+    @action
+    voteDown() {
+        this.voteScore = this.voteScore - 1;
+    }    
+
     /**
      * Update this todo with information from the server
      */

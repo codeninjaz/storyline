@@ -16,6 +16,10 @@ export class TransportLayer {
         }
     }
 
+    public saveStory(json) {
+        
+    }
+
     public createResponse(status, data){
         return {
             status : status,

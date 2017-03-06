@@ -34,8 +34,30 @@ export class StorylineStore {
                 this.storiesLoad = true;
             }
         }.bind(this));
-
-
         this.page++;
     }
+
+    @action loadStory = (id) => {
+        let story = this.stories.find(s => s.id === parseInt(id));
+        console.log(story)
+        if(story) {
+            return story;
+        }
+    }
+
+    @action
+    public upvoteStory = (id) => {
+        let story = this.stories.find(s => s.id === id);
+        if(story) {
+            story.voteUp();
+        }
+    }
+
+    @action
+    public downvoteStory = (id) => {
+        let story = this.stories.find(s => s.id === id);
+        if(story) {
+            story.voteDown();
+        }        
+    }    
 }
