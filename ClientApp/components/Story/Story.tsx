@@ -12,21 +12,42 @@ export interface IStoryProps {
 export class Story extends React.Component<any, void> {
     componentDidMount()
     {        
-        var p = this.props.storylineStore.loadStory(this.props.params.storyID);
+        this.props.storylineStore.loadStory(this.props.params.storyID);
+        window.scrollTo(0, 0);
     }
 
     public render() {
-
+        let view = null;
+        if(this.props.storylineStore.storyLoad) {
+            view = <div className='story-in-list'>
+                        <h1>LADDAR -- todo</h1>
+                    </div>
+        } 
+        else if(this.props.storylineStore.activeStory) {
+            let s = this.props.storylineStore.activeStory;
+            view = <div className='story-in-list'>
+                        <Votebar score={s.voteScore} storyId={s.id}/>
+                        <div className='story'>
+                            <h1>{s.title}</h1>
+                            <p>{s.created}
+                                <Link to={`/profile/view/${s.author.id}`}>
+                                    {s.author.name}
+                                </Link>
+                            </p>
+                            <p>
+                                {s.author.text}
+                            </p>
+                            {this.props.body}                    
+                        </div>
+                    </div>
+        }
+        else {
+            view = <div className='story-in-list'>
+                        <h1> ERROR -- todo </h1>
+                    </div>
+        }
         return <div className='story-width'>
-            <div className='story-in-list'>
-                <Votebar score={100} storyId={12}/>
-                <div className='story'>
-                    <h1>Rödluvan</h1>
-                    <p>3 dagar sedan av <Link to={'/profile/view/fluffmannen'}>fluffmannen</Link></p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>                    
-                    {this.props.body}                    
-                </div>
-            </div>
-        </div>;
+                    {view}
+                </div>;
     }
 }

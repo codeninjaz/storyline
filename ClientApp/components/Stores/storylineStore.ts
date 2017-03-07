@@ -12,11 +12,17 @@ export class StorylineStore {
     @observable
     public stories = [];
 
-    private page = 0;
-
     @observable
     public storiesLoad = false;
+
+    @observable
+    public activeStory = null;
+
+    @observable
+    public storyLoad = false;
     
+    private page = 0;
+
     @action
     public loadStories = () => {
         const pageSize = 2;
@@ -38,11 +44,31 @@ export class StorylineStore {
     }
 
     @action loadStory = (id) => {
-        let story = this.stories.find(s => s.id === parseInt(id));
-        console.log(story)
-        if(story) {
-            return story;
+        let parsedId = parseInt(id);
+        if(this.activeStory) {
+            if(this.activeStory.id === parsedId) {
+                return;
+            }
         }
+        
+        let story = this.stories.find(s => s.id === parsedId);
+        if(story) {
+            this.activeStory = story
+            return;
+        }
+
+        this.transportLayer.fetchStory(parsedId, function(result) {
+            if(result.status === TransportLayerStatus.Ok) {
+                this.activeStory = new Story(this, result.data);
+                this.storyLoad = false;
+            }
+            else if(result.status === TransportLayerStatus.Loading) {
+                this.storyLoad = true;
+            }
+            else {
+                this.storyLoad = false;
+            }                        
+        }.bind(this))
     }
 
     @action

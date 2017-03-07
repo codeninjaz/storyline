@@ -16,6 +16,20 @@ export class TransportLayer {
         }
     }
 
+    public fetchStory(id, callback) {
+        if(this.isDebug) {
+            callback(this.createResponse(TransportLayerStatus.Loading, null))
+            setTimeout(function(){
+                let story = storiesJson.find(s => s.storyId === id);
+                if(story) {
+                    callback(this.createResponse(TransportLayerStatus.Ok, story));
+                } else {
+                    callback(this.createResponse(TransportLayerStatus.Error, {"Type":"404", "Message": "Could not find item with id" + id}));
+                }
+            }.bind(this), 1000)            
+        }        
+    }
+
     public saveStory(json) {
         
     }

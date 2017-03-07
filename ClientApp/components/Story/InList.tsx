@@ -15,8 +15,8 @@ export class InList extends React.Component<any, void> {
                             </Link>
                         </h2>
                         <p>{this.props.data.created} 
-                            <Link to={`/profile/view/${this.props.data.author.id}`} >
-                            {this.props.data.author.name}
+                            <Link to={`/profile/view/${this.props.data.author.id}`}>
+                                {this.props.data.author.name}
                             </Link>
                         </p>
                         <p>{this.props.data.text}</p>
