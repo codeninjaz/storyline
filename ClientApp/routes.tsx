@@ -10,13 +10,15 @@ import { Create as StoryCreate } from './components/Story/Create';
 import { Edit as StoryEdit } from './components/Story/Edit';
 import { View as StoryView } from './components/Story/View';
 import { AnimationTest } from './components/Lab/AnimationTest';
-
+import {EnsureLoggedInContainer} from './components/EnsureLoggedInContainer';
 
 export default <Router history={browserHistory}><Route component={Layout}>
     <Route path='/' components={{ body: Home }} />
     <Route path='/story' components={{ body: Story }}>
         <Route path='view/:storyID' components={{ body: StoryView }} />
-        <Route path='edit/:storyID' components={{ body: StoryEdit }} />
+        <Route component={EnsureLoggedInContainer}>
+            <Route path='edit/:storyID' components={{ body: StoryEdit }}/>
+        </Route>
     </Route>
     <Route path='/story/create' components={{ body: StoryCreate }} />
     <Route path='/profile' components={{ body: Profile }}>

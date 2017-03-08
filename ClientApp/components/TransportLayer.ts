@@ -34,6 +34,19 @@ export class TransportLayer {
         
     }
 
+    public login(username, password, callback) {
+        if(this.isDebug) {
+            callback(this.createResponse(TransportLayerStatus.Loading, null));
+            setTimeout(function(){
+                if(username === 'olaf' && password === 'olaf2') {
+                    callback(this.createResponse(TransportLayerStatus.Ok, {id: 1234, username:'olaf'}));
+                } else {
+                    callback(this.createResponse(TransportLayerStatus.Error, {"Type":"500", "Message": 'Could not login user'}));
+                }
+            }.bind(this), 1000)             
+        }
+    }
+
     public createResponse(status, data){
         return {
             status : status,

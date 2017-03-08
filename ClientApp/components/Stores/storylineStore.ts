@@ -1,5 +1,6 @@
 import { observable, action, computed, reaction} from 'mobx';
 import {Story} from './Story';
+import {User} from './User';
 import {TransportLayerStatus} from '../TransportLayer';
 
 export class StorylineStore {
@@ -8,6 +9,12 @@ export class StorylineStore {
     constructor(transportLayer) {
         this.transportLayer = transportLayer; // Thing that can make server requests for us
     }
+
+    @observable
+    public loginVisible = false;
+
+    @observable
+    public loggedInUser = null;
 
     @observable
     public stories = [];
@@ -86,4 +93,21 @@ export class StorylineStore {
             story.voteDown();
         }        
     }    
+
+    @action
+    public login = (username, password) => {
+        this.transportLayer.login(username,password, function(result){
+            if(result.status === TransportLayerStatus.Ok) {
+                this.loggedInUser = new User(this, result.data);
+                this.loginVisible = false;
+            }
+            else if(result.status === TransportLayerStatus.Loading) {
+                this.loginLoad = true;
+            }
+            else if(result.status === TransportLayerStatus.Error) {
+                this.loggedInUser = null;
+                this.loginLoad = false;
+            }           
+        }.bind(this));
+    }
 }

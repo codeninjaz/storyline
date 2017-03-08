@@ -8,6 +8,30 @@
     background-color: $color-background;
 }
 
+.login {
+    z-index: 2;
+    position: fixed;
+    left: calc(50% - 125px);
+    width: 250px;
+    background-color: white;
+    border-bottom: 8px solid $color-border;
+    border-top: 8px solid $color-border;
+    top: 40%;
+    padding: $gutter;
+} 
+
+.backdrop {
+    content: '';
+    background-color: $header-color-background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: 0.5;        
+}
+
 .logo {
     @include flex(0 0 100px);
     text-align: center;

@@ -1,6 +1,6 @@
 import { observable, action, computed, reaction} from 'mobx';
 
-export class Story {
+export class User {
     /**
      * unique id of this Story, immutable.
      */
@@ -15,16 +15,11 @@ export class Story {
 
     /**
      * Disposer for the side effect that automatically
-     * stores this Story, see @dispose.
+     * stores this User, see @dispose.
      */
     saveHandler = null;
 
-    @observable title = '';
-    @observable text = '';
-    @observable voteScore = 0;
-    @observable voted = '';
-    @observable created = '';
-    @observable author = null;        
+    @observable username = null;  
 
     constructor(store, json) {
         this.store = store;
@@ -36,7 +31,7 @@ export class Story {
             // if autoSave is on, send json to server
             (json) => {
                 if (this.autoSave) {
-                    this.store.transportLayer.saveStory(json);
+                    this.store.transportLayer.saveUser(json);
                 }
             }
         );
@@ -45,21 +40,8 @@ export class Story {
     @computed get asJson() {
         return {
             id: this.id,
-            voted: this.voted
             //todo: måste ha med user här också då
         };
-    }
-
-    @action
-    voteUp() {
-        this.voteScore = this.voteScore + 1;
-        this.voted = 'up';
-    }
-
-    @action
-    voteDown() {
-        this.voteScore = this.voteScore - 1;
-        this.voted = 'down';
     }
 
     /**
@@ -68,18 +50,12 @@ export class Story {
     updateFromJson(json) {
         // make sure our changes aren't send back to the server
         this.autoSave = false;
-        this.title = json.title;
-        this.text = json.text;
-        this.id = json.storyId;
-        this.voteScore = json.voteScore;
-        this.created = json.created;
-        this.author = json.author;
-        this.voted = json.voted;
+        this.username = json.username;
         this.autoSave = true;
-    }        
+    }
 
     dispose() {
         // clean up the observer
         this.saveHandler();
-    }
+    }         
 }
