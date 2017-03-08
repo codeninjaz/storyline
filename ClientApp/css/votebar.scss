@@ -1,0 +1,49 @@
+.votebar {
+    flex: 0 0 50px;
+    text-align: center;
+
+    .up-vote {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: $color-unique;
+        cursor: pointer;
+        @include transition-standard();
+        &:hover {
+            @include hover-standard($color-unique, 'color');
+        }
+
+        &.disabled {
+            cursor: initial;
+            color: lighten($color-unique, 25%);
+        }
+    }
+
+    .score {
+        cursor: pointer;
+    }
+
+    .down-vote {
+        font-size: 2rem;
+        margin-top: 1rem;
+        color: $color-unique;
+        cursor: pointer;
+        @include transition-standard();
+        &:hover {
+            @include hover-standard($color-unique, 'color');
+        }
+
+        &.disabled {
+            cursor: initial;
+            color: lighten($color-unique, 25%);
+        }                
+    }
+
+    .edit {
+        font-size: 2rem;
+        color: $color-unique;
+        @include transition-standard();
+        &:hover {
+            @include hover-standard($color-unique, 'color');
+        }         
+    }
+}

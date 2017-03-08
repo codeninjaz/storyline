@@ -9,3 +9,20 @@
     -ms-flex: $input;
     flex: $input;    
 }
+
+@mixin transition($input) {
+    -moz-transition:    $input;
+    -o-transition:      $input;
+    -webkit-transition: $input;
+    transition:         $input;    
+}
+
+@mixin transition-standard(){
+    @include transition(all 0.4s ease-in-out);
+}
+
+@mixin hover-standard($input, $type) {
+    @if($type == 'color') {
+        color: darken($input, 25%);
+    }
+}

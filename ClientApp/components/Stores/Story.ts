@@ -22,6 +22,7 @@ export class Story {
     @observable title = '';
     @observable text = '';
     @observable voteScore = 0;
+    @observable voted = '';
     @observable created = '';
     @observable author = null;        
 
@@ -44,23 +45,22 @@ export class Story {
     @computed get asJson() {
         return {
             id: this.id,
-            title: this.title,
-            text: this.text,
-            voteScore: this.voteScore,
-            created: this.created,
-            authorId: this.author ? this.author.id : null
+            voted: this.voted
+            //todo: måste ha med user här också då
         };
     }
 
     @action
     voteUp() {
         this.voteScore = this.voteScore + 1;
+        this.voted = 'up';
     }
 
     @action
     voteDown() {
         this.voteScore = this.voteScore - 1;
-    }    
+        this.voted = 'down';
+    }
 
     /**
      * Update this todo with information from the server
@@ -74,6 +74,7 @@ export class Story {
         this.voteScore = json.voteScore;
         this.created = json.created;
         this.author = json.author;
+        this.voted = json.voted;
         this.autoSave = true;
     }        
 

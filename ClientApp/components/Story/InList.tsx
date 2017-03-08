@@ -7,7 +7,7 @@ import { observer } from 'mobx-react';
 export class InList extends React.Component<any, void> {
     public render() {
         return <div className='story-in-list'>
-                    <Votebar score={this.props.data.voteScore} storyId={this.props.data.id} />
+                    <Votebar score={this.props.data.voteScore} storyId={this.props.data.id} voted={this.props.data.voted} />
                     <div className='story'>
                         <h2>
                             <Link to={`/story/view/${this.props.data.id}`}>

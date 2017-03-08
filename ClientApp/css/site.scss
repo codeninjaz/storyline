@@ -1,6 +1,7 @@
 @import './general.scss';
 @import './variables.scss';
 @import './mixins.scss';
+@import './votebar.scss';
 
 /* ------------ */
 .layout {
@@ -108,28 +109,6 @@
         p {
             line-height: 1.8rem;
         }
-    }
-}
-
-.votebar {
-    flex: 0 0 50px;
-    text-align: center;
-
-    .up-vote {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: $color-unique;
-    }
-
-    .down-vote {
-        font-size: 2rem;
-        margin-top: 1rem;
-        color: $color-unique;
-    }
-
-    .edit {
-        font-size: 2rem;
-        color: $color-unique;
     }
 }
 
