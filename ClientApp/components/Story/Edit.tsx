@@ -1,18 +1,24 @@
 import * as React from 'react';
 import {InList} from './InList'
-import { Link } from 'react-router';
+import { Link, browserHistory  } from 'react-router';
+import { inject, observer } from 'mobx-react';
+import { IsAuthenticated } from '../IsAuthenticated';
 
 export interface IStoryEditState {
     showmore: boolean;
     edit: boolean;
 }
 
+@inject('storylineStore')
 export class Edit extends React.Component<any, IStoryEditState> {
 
     constructor() {
-        super();
-        
+        super();   
         this.state = {showmore : false, edit: false }
+    }
+
+    componentDidMount() {
+        IsAuthenticated(this.props.storylineStore);
     }
 
     handleClickOnShowMore(e) {
