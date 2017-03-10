@@ -18,7 +18,12 @@ export class Edit extends React.Component<any, IStoryEditState> {
     }
 
     componentDidMount() {
-        IsAuthenticated(this.props.storylineStore);
+        IsAuthenticated(this.props.storylineStore, 
+            function(status) {
+                if(!status) {
+                    browserHistory.push('/');
+                }
+        });
     }
 
     handleClickOnShowMore(e) {

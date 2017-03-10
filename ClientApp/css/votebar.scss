@@ -41,6 +41,7 @@
     .edit {
         font-size: 2rem;
         color: $color-unique;
+        cursor: pointer;
         @include transition-standard();
         &:hover {
             @include hover-standard($color-unique, 'color');

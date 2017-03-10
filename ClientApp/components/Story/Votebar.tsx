@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { inject, observer } from 'mobx-react';
+import { IsAuthenticated } from '../IsAuthenticated';
 
 export interface IVoteBarState {
     shorten: boolean;
@@ -30,13 +31,23 @@ export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
     }
 
     public handleVoteUp() {
-        this.props.storylineStore.upvoteStory(this.props.storyId);
-        this.showFullScore();
+        IsAuthenticated(this.props.storylineStore, 
+            function(status) {
+                if(status) {
+                    this.props.storylineStore.upvoteStory(this.props.storyId);
+                    this.showFullScore();
+                }
+        }.bind(this))
     }
 
     public handleVoteDown() {
-        this.props.storylineStore.downvoteStory(this.props.storyId);
-        this.showFullScore();
+        IsAuthenticated(this.props.storylineStore, 
+            function(status) {
+                if(status) {
+                    this.props.storylineStore.downvoteStory(this.props.storyId);
+                    this.showFullScore();
+                }
+        }.bind(this))
     }
 
     private timeout = null;
@@ -46,6 +57,15 @@ export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
         this.timeout = setTimeout(function(){
             this.setState({shorten: true});
         }.bind(this), 5000)
+    }
+
+    public handleClickOnEdit() {
+        IsAuthenticated(this.props.storylineStore, 
+            function(status) {
+                if(status) {
+                    browserHistory.push(`/story/edit/${this.props.storyId}`);
+                }
+        }.bind(this))
     }
 
     public shortenVotes(voteScore) {
@@ -89,9 +109,9 @@ export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
                         </span>
                     </div>
                     {downvote}
-                    <Link className='edit' to={`/story/edit/${this.props.storyId}`}>
+                    <span className='edit' onClick={() => this.handleClickOnEdit()}>
                         ⚙
-                    </Link>
+                    </span>
                 </div>;
     }
 }
