@@ -2,7 +2,7 @@ import * as React from 'react';
 import {InList} from './InList'
 import { Link, browserHistory  } from 'react-router';
 import { inject, observer } from 'mobx-react';
-import { IsAuthenticated } from '../IsAuthenticated';
+import { Security } from '../Security';
 
 export interface IStoryEditState {
     showmore: boolean;
@@ -18,7 +18,7 @@ export class Edit extends React.Component<any, IStoryEditState> {
     }
 
     componentDidMount() {
-        IsAuthenticated(this.props.storylineStore, 
+        Security.IsAuthenticated(this.props.storylineStore, 
             function(status) {
                 if(!status) {
                     browserHistory.push('/');

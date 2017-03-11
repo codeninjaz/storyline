@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, browserHistory } from 'react-router';
 import { inject, observer } from 'mobx-react';
-import { IsAuthenticated } from '../IsAuthenticated';
+import { Security } from '../Security';
 
 export interface IVoteBarState {
     shorten: boolean;
@@ -31,7 +31,7 @@ export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
     }
 
     public handleVoteUp() {
-        IsAuthenticated(this.props.storylineStore, 
+        Security.IsAuthenticated(this.props.storylineStore, 
             function(status) {
                 if(status) {
                     this.props.storylineStore.upvoteStory(this.props.storyId);
@@ -41,7 +41,7 @@ export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
     }
 
     public handleVoteDown() {
-        IsAuthenticated(this.props.storylineStore, 
+        Security.IsAuthenticated(this.props.storylineStore, 
             function(status) {
                 if(status) {
                     this.props.storylineStore.downvoteStory(this.props.storyId);
@@ -60,7 +60,7 @@ export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
     }
 
     public handleClickOnEdit() {
-        IsAuthenticated(this.props.storylineStore, 
+        Security.IsAuthenticated(this.props.storylineStore, 
             function(status) {
                 if(status) {
                     browserHistory.push(`/story/edit/${this.props.storyId}`);

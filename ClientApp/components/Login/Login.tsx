@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
-import { TransportLayerStatus } from '../TransportLayer';
 
 @inject('storylineStore')
 export class Login extends React.Component<any, any> {

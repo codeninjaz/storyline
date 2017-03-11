@@ -1,13 +1,14 @@
 import { observable, action, computed, reaction} from 'mobx';
 import {Story} from './Story';
 import {User} from './User';
-import {TransportLayerStatus} from '../TransportLayer';
 
 export class StorylineStore {
     transportLayer;
+    userStore;
 
-    constructor(transportLayer) {
+    constructor(transportLayer, userStore) {
         this.transportLayer = transportLayer; // Thing that can make server requests for us
+        this.userStore = userStore; //Store that can resolve users for us
     }
 
     @observable
@@ -36,14 +37,14 @@ export class StorylineStore {
         let startIndex = this.page * pageSize;
         this.transportLayer.fetchStories(startIndex, startIndex + pageSize, 
         function(result) {
-            if(result.status === TransportLayerStatus.Ok) {
+            if(result.status === this.transportLayer.Status.Ok) {
                 result.data.map((item, index) => {
                     this.stories.push(new Story(this, item));
                 });
 
                 this.storiesLoad = false;
             }
-            else if(result.status === TransportLayerStatus.Loading) {
+            else if(result.status === this.transportLayer.Status.Loading) {
                 this.storiesLoad = true;
             }
         }.bind(this));
@@ -65,11 +66,11 @@ export class StorylineStore {
         }
 
         this.transportLayer.fetchStory(parsedId, function(result) {
-            if(result.status === TransportLayerStatus.Ok) {
+            if(result.status === this.transportLayer.Status.Ok) {
                 this.activeStory = new Story(this, result.data);
                 this.storyLoad = false;
             }
-            else if(result.status === TransportLayerStatus.Loading) {
+            else if(result.status === this.transportLayer.Status.Loading) {
                 this.storyLoad = true;
             }
             else {
@@ -97,14 +98,14 @@ export class StorylineStore {
     @action
     public login = (username, password) => {
         this.transportLayer.login(username,password, function(result){
-            if(result.status === TransportLayerStatus.Ok) {
+            if(result.status === this.transportLayer.Status.Ok) {
                 this.loggedInUser = new User(this, result.data);
                 this.loginVisible = false;
             }
-            else if(result.status === TransportLayerStatus.Loading) {
+            else if(result.status === this.transportLayer.Status.Loading) {
                 this.loginLoad = true;
             }
-            else if(result.status === TransportLayerStatus.Error) {
+            else if(result.status === this.transportLayer.Status.Error) {
                 this.loggedInUser = null;
                 this.loginLoad = false;
             }           

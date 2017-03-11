@@ -1,4 +1,5 @@
 import { storiesJson } from './JsonData/stories';
+import { usersJson } from './JsonData/users';
 
 export class TransportLayer {
     isDebug;
@@ -9,22 +10,22 @@ export class TransportLayer {
 
     public fetchStories(start, end, callback) {
         if(this.isDebug) {
-            callback(this.createResponse(TransportLayerStatus.Loading, null))
+            callback(this.createResponse(this.Status.Loading, null))
             setTimeout(function(){
-                callback(this.createResponse(TransportLayerStatus.Ok, storiesJson.slice(start, end)))
+                callback(this.createResponse(this.Status.Ok, storiesJson.slice(start, end)))
             }.bind(this), 1000)            
         }
     }
 
     public fetchStory(id, callback) {
         if(this.isDebug) {
-            callback(this.createResponse(TransportLayerStatus.Loading, null))
+            callback(this.createResponse(this.Status.Loading, null))
             setTimeout(function(){
                 let story = storiesJson.find(s => s.storyId === id);
                 if(story) {
-                    callback(this.createResponse(TransportLayerStatus.Ok, story));
+                    callback(this.createResponse(this.Status.Ok, story));
                 } else {
-                    callback(this.createResponse(TransportLayerStatus.Error, {"Type":"404", "Message": "Could not find item with id" + id}));
+                    callback(this.createResponse(this.Status.Error, {"Type":"404", "Message": "Could not find item with id" + id}));
                 }
             }.bind(this), 1000)            
         }        
@@ -36,15 +37,20 @@ export class TransportLayer {
 
     public login(username, password, callback) {
         if(this.isDebug) {
-            callback(this.createResponse(TransportLayerStatus.Loading, null));
+            callback(this.createResponse(this.Status.Loading, null));
             setTimeout(function(){
-                if(username === 'olaf' && password === 'olaf2') {
-                    callback(this.createResponse(TransportLayerStatus.Ok, {id: 1234, username:'olaf'}));
+                let user = usersJson.find(s => s.username === username);
+                if(user && password) {
+                    callback(this.createResponse(this.Status.Ok, user));
                 } else {
-                    callback(this.createResponse(TransportLayerStatus.Error, {"Type":"500", "Message": 'Could not login user'}));
+                    callback(this.createResponse(this.Status.Error, {"Type":"500", "Message": 'Could not login user'}));
                 }
             }.bind(this), 1000)             
         }
+    }
+
+    public fetchUser(id) {
+
     }
 
     public createResponse(status, data){
@@ -53,10 +59,10 @@ export class TransportLayer {
             data : data
         }
     }
-}
 
-export class TransportLayerStatus {
-    public static Error = -1;
-    public static Loading = 0;
-    public static Ok = 1;    
+    public Status = {
+        Error : -1,
+        Loading : 0,
+        Ok : 1         
+    }
 }
