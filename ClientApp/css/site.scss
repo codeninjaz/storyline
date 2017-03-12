@@ -2,23 +2,12 @@
 @import './variables.scss';
 @import './mixins.scss';
 @import './votebar.scss';
+@import './login.scss';
 
 /* ------------ */
 .layout {
     background-color: $color-background;
 }
-
-.login {
-    z-index: 2;
-    position: fixed;
-    left: calc(50% - 125px);
-    width: 250px;
-    background-color: white;
-    border-bottom: 8px solid $color-border;
-    border-top: 8px solid $color-border;
-    top: 40%;
-    padding: $gutter;
-} 
 
 .backdrop {
     content: '';

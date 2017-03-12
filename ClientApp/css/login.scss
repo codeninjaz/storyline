@@ -1,0 +1,61 @@
+.login {
+    z-index: 2;
+    position: fixed;
+    left: calc(50% - 125px);
+    width: 250px;
+    background-color: white;
+    border-bottom: 8px solid $color-border;
+    top: 30%;
+    padding: $gutter/2;
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        line-height: $gutter/2;
+        margin-bottom: $gutter/2;
+        border: 2px solid $color-border;
+        padding-left: $gutter/3;
+        padding-right: $gutter/3;
+    }
+
+    input[type="button"] {
+        width: 100%;
+        line-height: $gutter/2;    
+        border: 0;
+        cursor: pointer;
+        background-color: $color-unique;
+        margin-bottom: $gutter/2;
+
+        @include transition-standard();
+        &:hover {
+            @include hover-standard($color-unique, 'background-color');
+        }         
+    }
+
+    header {
+        margin-top: -$gutter/2;
+        margin-left: -$gutter/2;
+        margin-right: -$gutter/2;
+        margin-bottom: $gutter/2;
+        padding-left: $gutter/2;
+        padding-right: $gutter/2;
+        background-color: $header-color-background;
+        height: $gutter;
+        line-height: $gutter;
+        color: $color-background;
+        position: relative;
+        font-weight: bold;
+
+        .close {
+            position: absolute;
+            right: 0;
+            padding-left: $gutter/2;
+            padding-right: $gutter/2;
+            cursor: pointer;
+
+            @include transition-standard();
+            &:hover {
+                @include hover-standard($color-background, 'color');
+            }            
+        }
+    }
+} 

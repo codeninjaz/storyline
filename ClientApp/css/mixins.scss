@@ -25,4 +25,7 @@
     @if($type == 'color') {
         color: darken($input, 25%);
     }
+    @if($type == 'background-color') {
+        background-color: darken($input, 25%);
+    }
 }
