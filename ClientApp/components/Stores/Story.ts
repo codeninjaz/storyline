@@ -24,7 +24,8 @@ export class Story {
     @observable voteScore = 0;
     @observable voted = '';
     @observable created = '';
-    @observable author = null;        
+    @observable author = null;
+    chapters = [];
 
     constructor(store, json) {
         this.store = store;
@@ -75,6 +76,7 @@ export class Story {
         this.created = json.created;
         this.author = json.author;
         this.voted = json.voted;
+        this.chapters = json.chapters;
         this.autoSave = true;
     }        
 
