@@ -29,3 +29,12 @@
         background-color: darken($input, 25%);
     }
 }
+
+
+@mixin roboto-font() {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+@mixin muli-font() {
+    font-family: 'Muli', sans-serif;
+}
