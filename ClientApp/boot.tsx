@@ -6,7 +6,7 @@ import { browserHistory, Router } from 'react-router';
 import routes from './routes';
 import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
-import { StorylineStore } from './components/Stores/StorylineStore';
+import { StorylineStore } from './components/Stores/storylineStore';
 import { UserStore } from './components/Stores/UserStore';
 import { TransportLayer } from './components/TransportLayer';
 

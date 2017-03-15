@@ -34,6 +34,7 @@ export class Story extends React.Component<any, void> {
                                     {s.author.name}
                                 </Link>
                             </p>
+                            <p>{s.text}</p>
                             <p>
                                 {s.author.text}
                             </p>
