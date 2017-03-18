@@ -3,10 +3,13 @@
 @import './mixins.scss';
 @import './votebar.scss';
 @import './login.scss';
+@import './story.scss';
 
 /* ------------ */
 .layout {
     background-color: $color-background;
+    padding: $gutter/4;
+    padding-top: 85px + $gutter;    
 }
 
 .backdrop {
@@ -33,10 +36,14 @@
 }
 
 .site-header {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
     background-color: $header-color-background;
     color: $color-background;
-    margin-bottom: $gutter;
+    margin-top: -85px - $gutter;
+    margin-left: -$gutter/4;
+    margin-right: -$gutter/4;
     height: 85px;
 
     a {
@@ -67,7 +74,7 @@
     }    
 }
 
-.main-menu {
+.main-menu {    
     @include flex(0 0 300px); 
     ul {
         list-style: none;
@@ -92,9 +99,7 @@
         ul {
             li {
                 padding: 0.5rem;
-                a {
                 font-size: 0.6rem;
-                } 
             }    
         }    
     }
@@ -103,26 +108,6 @@
 .story-width {
     max-width: $content-width;
     margin: 0 auto $gutter auto;
-}
-
-.story-in-list {
-    padding: 1rem;
-    background-color: white;
-    margin-bottom: $gutter;
-    @include displayFlex();
-    border-bottom: 8px solid $color-border;
-
-    .story {
-        padding-left: 1rem;
-
-        h2 {
-            font-size: 2rem;
-        }
-
-        p {
-            line-height: 1.8rem;
-        }
-    }
 }
 
 .view-story {

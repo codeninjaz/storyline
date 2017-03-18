@@ -1,0 +1,47 @@
+.story-in-list {
+    padding: 1rem;
+    max-height: 24rem;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: $gutter;
+    @include displayFlex();
+    border-bottom: 8px solid $color-border;
+    position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        height: 3rem;
+        left: 0;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+83 */
+        background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 83%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 83%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 83%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    }
+}
+
+.story-unlimited {
+    padding: 1rem;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: $gutter;
+    @include displayFlex();
+    border-bottom: 8px solid $color-border;
+    position: relative;    
+}
+
+.story {
+    padding-left: 1rem;
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        line-height: 1.8rem;
+    }
+}

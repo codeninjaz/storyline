@@ -47,7 +47,6 @@ export class Layout extends React.Component<ILayoutProps, void> {
                         <ul>
                             <li><Link to={'/story/create'}>Create story</Link></li>
                             {loginout}
-                            <li><Link to={'/lab/animation'}>Test animation</Link></li>
                         </ul>
                     </nav>
                 </div>

@@ -25,7 +25,7 @@ export class Story extends React.Component<any, void> {
         } 
         else if(this.props.storylineStore.activeStory) {
             let s = this.props.storylineStore.activeStory;
-            view = <div className='story-in-list'>
+            view = <div className='story-unlimited'>
                         <Votebar score={s.voteScore} storyId={s.id} voted={s.voted}/>
                         <div className='story'>
                             <h1>{s.title}</h1>
