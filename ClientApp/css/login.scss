@@ -1,5 +1,5 @@
 .login {
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     left: calc(50% - 125px);
     width: 250px;
@@ -57,4 +57,16 @@
             }            
         }
     }
-} 
+}
+
+.backdrop {
+    content: '';
+    background-color: $header-color-background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0.5;        
+}

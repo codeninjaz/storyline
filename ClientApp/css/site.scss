@@ -12,18 +12,6 @@
     padding-top: 85px + $gutter;    
 }
 
-.backdrop {
-    content: '';
-    background-color: $header-color-background;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    opacity: 0.5;        
-}
-
 .logo {
     @include flex(0 0 100px);
     text-align: center;
