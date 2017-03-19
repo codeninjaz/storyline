@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { Votebar } from './Votebar';
 import { inject, observer } from 'mobx-react';
+import { StoryRender } from './StoryRender';
 
 export interface IStoryProps {
     body: React.ReactElement<any>;
@@ -24,23 +25,7 @@ export class Story extends React.Component<any, void> {
                     </div>
         } 
         else if(this.props.storylineStore.activeStory) {
-            let s = this.props.storylineStore.activeStory;
-            view = <div className='story-unlimited'>
-                        <Votebar score={s.voteScore} storyId={s.id} voted={s.voted}/>
-                        <div className='story'>
-                            <h1>{s.title}</h1>
-                            <p>{s.created}
-                                <Link to={`/profile/view/${s.author.id}`}>
-                                    {s.author.name}
-                                </Link>
-                            </p>
-                            <p>{s.text}</p>
-                            <p>
-                                {s.author.text}
-                            </p>
-                            {this.props.body}                    
-                        </div>
-                    </div>
+            view = StoryRender(this.props.storylineStore.activeStory, 'story-unlimited', this.props.body, false)
         }
         else {
             view = <div className='story-in-list'>

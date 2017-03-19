@@ -37,11 +37,41 @@
 .story {
     padding-left: 1rem;
 
-    h2 {
-        font-size: 2rem;
-    }
-
     p {
         line-height: 1.8rem;
+    }
+
+    .creation {
+        a {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.story-part {
+    position: relative;
+
+    .profile {
+        position: absolute;
+        right: 0;
+        bottom: -1rem;
+        opacity: 0.5;
+    }
+
+    .votebar {
+        display: inline-block;
+        width: 50px;
+        position: absolute;
+        left: -65px;
+        opacity: 0.5;
+        .down-vote {
+            font-size: 1rem;
+        }
+        .up-vote {
+            font-size: 1rem;
+        }
+        .edit {
+            font-size: 1rem;
+        }
     }
 }

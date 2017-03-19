@@ -16,11 +16,64 @@
     @include flex(0 0 100px);
     text-align: center;
     font-size: 2rem;
+    transition: all 1s;
+
+    &[data-isLoading="true"] {
+        color: green;
+    }
 
     @media (max-width: $mobile-max-width) {
         @include flex(0 0 50px);
         font-size: 1rem;
     }
+}
+
+.loading-bar {
+    position: fixed;
+    z-index: 2;
+    margin-top: -$gutter;
+    width: 100%;
+    margin-left: -$gutter/4;
+    margin-right: -$gutter/4;
+    height: 8px;    
+
+    &:before {
+        content: '';
+        display: block;
+        background-color: $color-unique;
+        height: 5px;
+        transition: all 0.2s;
+    }
+
+    &[data-percentage="0"] {
+        &:before {
+            width: 0%;
+        }
+    }
+
+    &[data-percentage="25"] {
+        &:before {
+            width: 25%;
+        }
+    }
+
+    &[data-percentage="50"] {
+        &:before {
+            width: 50%;
+        }
+    }
+
+    &[data-percentage="75"] {
+        &:before {
+            width: 75%;
+        }
+    }
+
+    &[data-percentage="100"] {
+        &:before {
+            width: 100%;
+        }
+    }                 
 }
 
 .site-header {
@@ -96,32 +149,4 @@
 .story-width {
     max-width: $content-width;
     margin: 0 auto $gutter auto;
-}
-
-.view-story {
-    position: relative;
-
-    .profile {
-        position: absolute;
-        right: 0;
-        bottom: -1rem;
-        opacity: 0.5;
-    }
-
-    .votebar {
-        display: inline-block;
-        width: 50px;
-        position: absolute;
-        left: -65px;
-        opacity: 0.5;
-        .down-vote {
-            font-size: 1rem;
-        }
-        .up-vote {
-            font-size: 1rem;
-        }
-        .edit {
-            font-size: 1rem;
-        }
-    }
 }

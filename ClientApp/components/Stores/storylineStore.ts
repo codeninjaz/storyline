@@ -21,7 +21,10 @@ export class StorylineStore {
     public stories = [];
 
     @observable
-    public storiesLoad = false;
+    public isLoading = false;
+
+    @observable
+    public loadingPercentage = 0;
 
     @observable
     public activeStory = null;
@@ -33,7 +36,7 @@ export class StorylineStore {
 
     @action
     public loadStories = () => {
-        const pageSize = 2;
+        const pageSize = 3;
         let startIndex = this.page * pageSize;
         this.transportLayer.fetchStories(startIndex, startIndex + pageSize, 
         function(result) {
@@ -42,10 +45,12 @@ export class StorylineStore {
                     this.stories.push(new Story(this, item));
                 });
 
-                this.storiesLoad = false;
+                this.isLoading = false;
+                this.loadingPercentage = 100;
             }
             else if(result.status === this.transportLayer.Status.Loading) {
-                this.storiesLoad = true;
+                this.isLoading = true;
+                this.loadingPercentage = result.loadingPercentage;
             }
         }.bind(this));
         this.page++;

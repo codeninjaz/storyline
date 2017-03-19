@@ -31,13 +31,18 @@ export class Layout extends React.Component<ILayoutProps, void> {
             loginout = <li onClick={() => this.handleLoginClick()}>Login</li>
         }
 
+        let loadingBar = null;
+        if(this.props.storylineStore.isLoading) {
+            loadingBar = <div className='loading-bar' data-percentage={this.props.storylineStore.loadingPercentage}></div>;
+        }
+
         return <div className='layout'>
 
             <header className='site-header'>
                 <div className='header-width'>
                     <div className='logo'>
                         °□°
-                            </div>
+                    </div>                    
                     <div className='header-middle-area'>
                         <Link to={'/'}>
                             Storyline
@@ -51,6 +56,7 @@ export class Layout extends React.Component<ILayoutProps, void> {
                     </nav>
                 </div>
             </header>
+            {loadingBar}
             {loginView}
             {this.props.body}
         </div>;

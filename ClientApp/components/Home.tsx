@@ -20,7 +20,6 @@ export class Home extends React.Component<any, void> {
         return <div className='story-width'>
             <ScrollWrapper onWindowScroll={(event) => this.handleScroll(event)} scrollTo={this.scrollToElement}>
                 {this.props.storylineStore.stories.map(function (item, index) {
-                    console.log(item)
                     return <InList key={item.id} data={item} type='text' />
                 })}
 
