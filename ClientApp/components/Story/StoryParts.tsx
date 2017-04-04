@@ -11,7 +11,6 @@ export class StoryParts extends React.Component<any, void> {
 
         let i = 0;
         return <div className='story-part'>
-                    <Votebar/>
                     <p>{p.text}</p>
                     <Link className='profile' to={'/profile/view/fluffmannen'}>fluffmannen</Link>                
                 </div>;

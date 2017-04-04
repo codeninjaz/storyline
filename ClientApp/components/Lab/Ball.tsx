@@ -24,7 +24,7 @@ const ballStyle = (b) => {
 
 const textStyle = {
     fontSize: '1rem',
-    fontWeight: 'bold',
+    fontWeight: 300,
     left: '50%',
     position: 'absolute',
     textTransform: 'uppercase',
@@ -60,7 +60,7 @@ const Ball = (props) => {
         <Motion style={style}>
             {(ballst) => (
                 <div style={ballStyle(ballst)} onClick={props.onClick.bind(this)} >
-                    <span style={textStyle}>{ballst.color}</span>
+                    <span>{ballst.color}</span>
                 </div>
             )}
         </Motion>

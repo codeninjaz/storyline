@@ -15,7 +15,7 @@ export interface IVoteBarProps {
 
 @inject('storylineStore')
 @observer
-export class Votebar extends React.Component<IVoteBarProps, IVoteBarState> {
+export class Votebar extends React.Component<any, IVoteBarState> {
     constructor(props) {
         super(props);
 

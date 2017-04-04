@@ -4,6 +4,11 @@
     overflow: hidden;
     background-color: white;
     margin-bottom: $gutter;
+
+    @media (max-width: $mobile-max-width) {
+        margin-bottom: $gutter/4;
+    }
+
     @include displayFlex();
     border-bottom: 8px solid $color-border;
     position: relative;

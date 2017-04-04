@@ -9,7 +9,7 @@ export interface ILayoutProps {
 
 @inject('storylineStore')
 @observer
-export class Layout extends React.Component<ILayoutProps, void> {
+export class Layout extends React.Component<any, void> {
     handleLoginClick() {
         this.props.storylineStore.loginVisible = true;
     }
@@ -26,9 +26,9 @@ export class Layout extends React.Component<ILayoutProps, void> {
 
         let loginout = null;
         if(this.props.storylineStore.loggedInUser) {
-            loginout = <li onClick={() => this.handleLogoutClick()}>Logout {this.props.storylineStore.loggedInUser.username}</li>
+            loginout = <li onClick={() => this.handleLogoutClick()}><span>Logout {this.props.storylineStore.loggedInUser.username}</span></li>
         } else {
-            loginout = <li onClick={() => this.handleLoginClick()}>Login</li>
+            loginout = <li onClick={() => this.handleLoginClick()}><span>Login</span></li>
         }
 
         let loadingBar = null;
